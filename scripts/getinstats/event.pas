@@ -38,7 +38,7 @@ End;
 
 Procedure OnMapChange(NewMap : string);
 Begin
-    SaveMapStat;
+	SaveMapStat;
 End;
 
 Procedure OnPlayerKill(Killer, Victim : Byte; Weapon : String);

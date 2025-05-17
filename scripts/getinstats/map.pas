@@ -2,7 +2,7 @@ Function SaveMapStat() : Boolean;
 Var MapStat : String;
 Begin
 	MapStat :=
-	    'style=' + IntToStr(GameStyle) + #13#10 +
+		'style=' + IntToStr(GameStyle) + #13#10 +
 		'current=' + CurrentMap + #13#10 +
 		'next=' + NextMap + #13#10 +
 		'players=' + IntToStr(NumPlayers) + #13#10 +
@@ -18,6 +18,6 @@ Begin
 	MapTimer :=
 		'left=' + IntToStr(TimeLeft) + #13#10 +
 		'limit=' + IntToStr(TimeLimit * 60);
-    WriteFile('scripts/getinstats/map/timer', MapTimer);
+	WriteFile('scripts/getinstats/map/timer', MapTimer);
 	Result := True;
 End;
