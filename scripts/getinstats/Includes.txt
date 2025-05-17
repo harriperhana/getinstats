@@ -1,1 +1,5 @@
-script.pas
+map.pas
+player.pas
+team.pas
+event.pas
+ticker.pas
