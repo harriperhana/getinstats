@@ -7,7 +7,7 @@ Begin
 		'score=' + IntToStr(AlphaScore);
 	WriteFile('scripts/getinstats/team/stat/1', TeamStat);
 	TeamStat :=
-        'id=2' + #13#10 +
+    	'id=2' + #13#10 +
 		'players=' + IntToStr(BravoPlayers) + #13#10 +
 		'score=' + IntToStr(BravoScore);
 	WriteFile('scripts/getinstats/team/stat/2', TeamStat);
