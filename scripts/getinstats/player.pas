@@ -31,7 +31,7 @@ Begin
 		'jets=' + IntToStr(GetPlayerStat(ID, 'Jets')) + #13#10 +
 		'active=' + BoolToInt(GetPlayerStat(ID, 'Active')) + #13#10 +
 		'time=' + IntToStr(GetPlayerStat(ID, 'Time'));
-	WriteFile('scripts/getinstats/player/stat/' + GetPlayerStat(ID, 'HWID'), PlayerStat);
+	WriteFile('scripts/getinstats/data/player/' + GetPlayerStat(ID, 'HWID'), PlayerStat);
 	Result := True;
 End;
 

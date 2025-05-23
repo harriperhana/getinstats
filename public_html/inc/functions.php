@@ -53,6 +53,16 @@ function team2array(string $file): array {
 
 }
 
+function map2array(string $file): array {
+
+    return array_map(function ($value) {
+
+        return is_numeric($value) ? intval($value) : $value;
+
+    }, parse_ini_file($file));
+
+}
+
 function get_weapon(int $id): string {
 
     return [

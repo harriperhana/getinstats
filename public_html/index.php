@@ -2,24 +2,9 @@
 
 require_once "inc/functions.php";
 
-$map = $players = $groups = $teams = [];
+$players = $groups = $teams = [];
 
-foreach (glob("../scripts/getinstats/map/*") as $stat) {
-
-    foreach (parse_ini_file("../scripts/getinstats/map/" . basename($stat)) as $key => $value) {
-
-        $map[$key] = is_numeric($value) ? intval($value) : $value;
-
-    }
-
-}
-
-$map["style"] = [
-    "id" => $map["style"],
-    "name" => get_style($map["style"])
-];
-
-foreach (glob("../scripts/getinstats/player/stat/*") as $stat) {
+foreach (glob("../scripts/getinstats/data/player/*") as $stat) {
 
     $player = player2array($stat);
 
@@ -52,17 +37,31 @@ if (isset($_GET["group_teams"])) {
 
 }
 
-foreach (glob("../scripts/getinstats/team/stat/*") as $stat) {
+foreach (glob("../scripts/getinstats/data/team/*") as $stat) {
 
     $teams[] = team2array($stat);
 
 }
 
-header("Content-Type: application/json; charset=utf-8");
-http_response_code(200);
-
-print json_encode([
-    "map" => $map,
+$response = [
+    "map" => map2array("../scripts/getinstats/data/map"),
     "players" => $players,
     "teams" => $teams
-], JSON_PRETTY_PRINT);
+];
+
+if (php_sapi_name() === "cli") {
+
+    if ($argv[1] === "ruutupaneeli") {
+
+        $response["module"] = "soldat";
+
+    }
+
+} else {
+
+    header("Content-Type: application/json; charset=utf-8");
+    http_response_code(200);
+
+}
+
+print json_encode($response, JSON_PRETTY_PRINT);
